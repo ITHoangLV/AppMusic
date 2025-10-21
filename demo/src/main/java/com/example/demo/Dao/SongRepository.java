@@ -17,4 +17,7 @@ public interface SongRepository extends JpaRepository<Song, Integer> {
   @Query("SELECT s FROM Song s WHERE s.category.id = :categoryId ORDER BY s.luotThich DESC")
   List<Song> findByCategoryId(@Param("categoryId") int categoryId);
 
+   @Query("SELECT s FROM Song s WHERE LOWER(s.tenBaiHat) LIKE LOWER(CONCAT('%', :keyword, '%'))")
+  List<Song> findByTenBaiHatContainingIgnoreCase(@Param("keyword") String keyword);
+
 }
