@@ -24,4 +24,9 @@ public class SongController {
   public List<Song> getSongsByCategory(@PathVariable Integer id) {
     return songService.getSongsByCategory(id);
   }
+
+  @GetMapping("/search")
+  public List<Song> searchSongs(@RequestParam("keyword") String keyword) {
+    return songService.searchSongs(keyword);
+  }
 }
