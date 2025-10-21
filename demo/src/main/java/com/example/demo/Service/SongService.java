@@ -31,4 +31,11 @@ public class SongService {
   public List<Song> getSongsByCategory(Integer category) {
     return songRepository.findByCategoryId(category);
   }
+
+  public List<Song> searchSongs(String keyword) {
+    if (keyword == null || keyword.trim().isEmpty()) {
+      return List.of();
+    }
+    return songRepository.findByTenBaiHatContainingIgnoreCase(keyword);
+  }
 }
